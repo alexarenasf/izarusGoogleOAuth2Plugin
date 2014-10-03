@@ -1,0 +1,6 @@
+all:
+  googleoauth2:
+    client_id:             XYZ
+    client_secret:         XYZ
+    hosted_domain:    ''
+    after_signin_url:   '@homepage'
