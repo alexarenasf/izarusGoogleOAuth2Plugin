@@ -7,16 +7,21 @@ class sfIzarusGoogleOAuth2
   protected $client = null;
   protected $access_token = null;
 
-  public function __construct(){
+  public function __construct($domain=false){
     sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
 
     $client_id = sfConfig::get('app_googleoauth2_client_id');
     $client_secret = sfConfig::get('app_googleoauth2_client_secret');
     $hd = sfConfig::get('app_googleoauth2_hosted_domain');
-
+    $allowed_domains = sfConfig::get('app_googleoauth2_allowed_domains');
+       
     $this->client = new Google_Client();
-    if(!empty($hd))
+    if(!$domain && !empty($hd))
       $this->client->setHostedDomain($hd);
+    else if($domain && in_array($domain,$allowed_domains))
+      $this->client->setHostedDomain($domain);
+    else if($domain && !in_array($domain,$allowed_domains))
+      die;
     $this->client->setClientId($client_id);
     $this->client->setClientSecret($client_secret);
     $this->client->setRedirectUri(url_for('@izarus_googleoauth2_signin',true));

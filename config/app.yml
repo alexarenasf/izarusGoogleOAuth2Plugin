@@ -3,4 +3,5 @@ all:
     client_id:             XYZ
     client_secret:         XYZ
     hosted_domain:    ''
+    allowed_domains:  []
     after_signin_url:   '@homepage'

@@ -8,7 +8,7 @@ class BasesfIzarusGoogleOAuth2AuthActions extends sfActions
       $this->getUser()->setFlash('redirect',$request->getParameter('redirect'));
     }
 
-    $google = new sfIzarusGoogleOAuth2();  
+    $google = new sfIzarusGoogleOAuth2($request->getParameter('domain'));  
     
     if (!isset($_GET['code'])) {
       return $this->redirect($google->getLoginUrl());
