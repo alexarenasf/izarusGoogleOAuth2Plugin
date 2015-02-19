@@ -25,7 +25,8 @@ class sfIzarusGoogleOAuth2
     $this->client->setClientId($client_id);
     $this->client->setClientSecret($client_secret);
     $this->client->setRedirectUri(url_for('@izarus_googleoauth2_signin',true));
-    $this->client->addScope("https://www.googleapis.com/auth/userinfo.email");  
+    $this->client->addScope("https://www.googleapis.com/auth/userinfo.email"); 
+    $this->client->addScope("https://www.googleapis.com/auth/userinfo.profile"); 
   }
 
   public function getUser() {

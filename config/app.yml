@@ -5,3 +5,4 @@ all:
     hosted_domain:    ''
     allowed_domains:  []
     after_signin_url:   '@homepage'
+    create_users:        false
